@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy 8 Months, My Love! 💖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #fce4ec, #f3e5f5);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating hearts animation */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart-particle {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: floatUp 15s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Flower animation */
+        .flower-particle {
+            position: absolute;
+            font-size: 1.8rem;
+            animation: flowerMove 10s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes flowerMove {
+            0% { transform: translateX(0) translateY(0); opacity: 0.8; }
+            25% { transform: translateX(100px) translateY(50px); opacity: 0.9; }
+            50% { transform: translateX(-100px) translateY(100px); opacity: 1; }
+            75% { transform: translateX(50px) translateY(-100px); opacity: 0.9; }
+            100% { transform: translateX(0) translateY(0); opacity: 0.8; }
+        }
+
+        /* Flower Borders */
+        .flower-border {
+            position: fixed;
+            width: 100%;
+            height: 150px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff69b4' d='M50 0C55.5 0 60 4.5 60 10C60 15.5 55.5 20 50 20C44.5 20 40 15.5 40 10C40 4.5 44.5 0 50 0zM50 8C51.7 8 53 6.7 53 5C53 3.3 51.7 2 50 2C48.3 2 47 3.3 47 5C47 6.7 48.3 8 50 8z'/%3E%3C/svg%3E") repeat-x;
+            background-size: 50px;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .flower-border.top {
+            top: 0;
+        }
+
+        .flower-border.bottom {
+            bottom: 0;
+            transform: rotate(180deg);
+        }
+
+        .header {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath fill='%23ffd1dc' d='M40 0C45.5 0 50 4.5 50 10C50 15.5 45.5 20 40 20C34.5 20 30 15.5 30 10C30 4.5 34.5 0 40 0z'/%3E%3C/svg%3E") repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        h1 {
+            color: #e91e63;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: sparkle 2s infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4; }
+            50% { text-shadow: 0 0 20px #ff69b4, 0 0 30px #ff69b4; }
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .memory-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .memory-card::before {
+            content: '💕';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .memory-card:hover::before {
+            top: 10px;
+            opacity: 1;
+        }
+
+        .memory-card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            max-height: 400px;
+            transition: transform 0.5s ease;
+        }
+
+        .memory-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .memory-card .caption {
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            background: rgba(255,255,255,0.9);
+            position: relative;
+        }
+
+        .love-message {
+            text-align: center;
+            padding: 4rem 2rem;
+            font-size: 1.4rem;
+            line-height: 2;
+            position: relative;
+            background: rgba(255,255,255,0.8);
+            margin: 2rem auto;
+            max-width: 800px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .heart {
+            display: inline-block;
+            color: #e91e63;
+            animation: heartBeat 1.5s infinite;
+            font-size: 1.5em;
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.3); }
+            40% { transform: scale(1); }
+            60% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 2rem;
+            position: relative;
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item {
+            padding: 2rem;
+            border-left: 3px solid #e91e63;
+            margin-bottom: 2rem;
+            position: relative;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-item::before {
+            content: '🌸';
+            position: absolute;
+            left: -20px;
+            top: 0;
+            animation: rotate 3s infinite linear;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.9);
+            position: relative;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .footer p a {
+            color: #e91e63;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Music (hidden initially) -->
+    <audio id="bgMusic" loop>
+        <source src="our-song.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="floating-hearts">
+        <div class="heart-particle" style="left: 10%; animation-duration: 14s;">💖</div>
+        <div class="heart-particle" style="left: 25%; animation-duration: 10s;">💕</div>
+        <div class="heart-particle" style="left: 45%; animation-duration: 12s;">💓</div>
+        <div class="heart-particle" style="left: 65%; animation-duration: 16s;">💞</div>
+        <div class="heart-particle" style="left: 80%; animation-duration: 18s;">💘</div>
+    </div>
+
+    <div class="flower-border top"></div>
+
+    <header class="header">
+        <h1>Happy 8 Months, My Love! 💖</h1>
+    </header>
+
+    <section class="gallery">
+        <div class="memory-card">
+            <img src="10.jpg" alt="A special moment">
+            <div class="caption">A beautiful day together!</div>
+        </div>
+        <div class="memory-card">
+            <img src="3rd.jpg" alt="Another moment">
+            <div class="caption">My day with you!</div>
+        </div>
+    </section>
+
+    <div class="love-message">
+        <p>You are the most beautiful, pretty, and cute girl. My love for you will always be there. Thank you for coming into my life. You are the best of the best, and I am so lucky to have you. Here's to many more months and years by your side, my palagi! 💕</p>
+    </div>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <h2>My pretty girl</h2>
+            <p></p>
+        </div>
+        <div class="timeline-item">
+            <h2>Your beautiful smiles</h2>
+            <p>Shared laughs, hugs, and wonderful memories...</p>
+        </div>
+        <div class="timeline-item">
+            <h2>I loveeeee youuuu!!</h2>
+            <p>Celebrating our love that's growing deeper every day...</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Created with ❤️ for you. Check our <a href="#">special memories page</a> to relive all the beautiful moments.</p>
+    </footer>
+
+    <div class="flower-border bottom"></div>
+
+    <script>
+        // Play music on click anywhere on the page
+        document.body.addEventListener('click', function() {
+            var music = document.getElementById('bgMusic');
+            if (music.paused) {
+                music.play();
+            }
+        });
+    </script>
+</body>
+</html>
